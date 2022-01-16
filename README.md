@@ -5,7 +5,7 @@ Delivery Fee Calculator.
 ## Getting Started
 
 This project contains a simple Dart console application for calculating the distance fee base on the 
-description in the 'Wolt grade - Delivery Fee Calculator - Frontend and Mobile.pdf'
+description in the 'grade - Delivery Fee Calculator - Frontend and Mobile.pdf'
 file.
 
 How to:
