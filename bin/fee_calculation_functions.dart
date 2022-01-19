@@ -5,28 +5,35 @@ class FeeCalFunctions {
       int itemCount, String date, String time) {
     double totalDeliveryFee = 0.0;
     double maxDeliveryFee = 15.0;
-    // return 0 if the Cart Value 0 and there is no item to deliver.
+
+    // Case 0:  return 0 if the Cart Value 0 and there is no item to deliver.
     if (cartValue == 0.0 && itemCount == 0.0) {
-      return 0.0;
+      return totalDeliveryFee;
     }
-    // Calculate for CartValue < 100 otherwise returns 0
+    // Case 1: Calculate for CartValue < 100 otherwise returns 0
     if (cartValue < 100) {
       totalDeliveryFee = cartValueSurcharge(cartValue) +
           distanceFee(distance) +
           itemsCountSurcharge(itemCount);
-      bool fridayRush = isFridayRush(date, time);
 
+      //Case 1.1: totalDeliveryFee > maxDeliveryFee
       if (totalDeliveryFee > maxDeliveryFee) {
         return maxDeliveryFee;
       }
+
+      //Case 1.2: fridayRush && totalDeliveryFee < maxDeliveryFee
+      bool fridayRush = isFridayRush(date, time);
       if (fridayRush && totalDeliveryFee < maxDeliveryFee) {
         totalDeliveryFee = totalDeliveryFee * 1.1;
+      
+        //Please note that isFridayRush(date, time) is expensive than Equality
+        // or relational operation. Thus the decision to include and additional
+        //rational operation instead of checking the date first.
+        //Case 1.2.1: totalDeliveryFee > maxDeliveryFee
         if (totalDeliveryFee > maxDeliveryFee) {
           return maxDeliveryFee;
         }
-        return totalDeliveryFee;
       }
-      return totalDeliveryFee;
     }
     return totalDeliveryFee;
   }
@@ -57,7 +64,7 @@ class FeeCalFunctions {
     double baseFee = 2;
     num addedFee = 0;
     if (distance < 1000) {
-      return 0.0;
+      return baseFee;
     } else if (distance > 1000) {
       if ((distance - 1000) % 500 == 0) {
         addedFee = ((distance - 1000) ~/ 500);

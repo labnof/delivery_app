@@ -30,4 +30,4 @@ packages:
     source: hosted
     version: "1.8.1"
 sdks:
-  dart: ">=2.16.0-144.0.dev <3.0.0"
+  dart: ">=2.15.0-144.0.dev <3.0.0"
