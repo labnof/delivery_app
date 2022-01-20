@@ -5,7 +5,6 @@ class FeeCalFunctions {
   // Function calculates the total delivery cost
   static double totalDeliveryFee(double cartValue, double distance,
       int itemCount, String date, String time) {
-
     double totalDeliveryFee = 0.0;
     double kMaxDeliveryFee = 15.0;
 
@@ -19,9 +18,9 @@ class FeeCalFunctions {
           distanceFee(distance) +
           itemsCountSurcharge(itemCount);
 
-      //Case 1.2: fridayRush && totalDeliveryFee < kMaxDeliveryFee
+      //Case 1.1: fridayRush
       bool fridayRush = isFridayRush(date, time);
-      if (fridayRush && totalDeliveryFee < kMaxDeliveryFee) {
+      if (fridayRush) {
         totalDeliveryFee = totalDeliveryFee * 1.1;
       }
     }
@@ -58,7 +57,7 @@ class FeeCalFunctions {
     if (distance < kBaseDistance) {
       return kBaseFee;
     }
-    return kBaseFee + ((distance - kBaseDistance)/kAdditionalDistance).ceil();
+    return kBaseFee + ((distance - kBaseDistance) / kAdditionalDistance).ceil();
   }
 
   // Function calculates surcharge for food items over 4
@@ -72,4 +71,3 @@ class FeeCalFunctions {
     return surcharge;
   }
 }
-
