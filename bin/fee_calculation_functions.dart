@@ -6,7 +6,7 @@ class FeeCalFunctions {
   static double totalDeliveryFee(double cartValue, double distance,
       int itemCount, String date, String time) {
     double totalDeliveryFee = 0.0;
-    double kMaxDeliveryFee = 15.0;
+    const double kMaxDeliveryFee = 15.0;
 
     // Case 0:  return 0 if the Cart Value 0 and there is no item to deliver.
     if (cartValue == 0.0 && itemCount == 0.0) {
@@ -29,8 +29,8 @@ class FeeCalFunctions {
 
 // checks if it is friday rush
   static bool isFridayRush(String date, String time) {
-    num kRushStartTime = 15.0;
-    num kRushEndTime = 19.0;
+   const num kRushStartTime = 15.0;
+   const num kRushEndTime = 19.0;
 
     num givenTime =
         num.parse("${time.substring(0, 2)}.${time.substring(3, 5)}");
@@ -50,9 +50,9 @@ class FeeCalFunctions {
 
   // Function calculates the distance fee
   static double distanceFee(double distance) {
-    double kBaseFee = 2;
-    int kBaseDistance = 1000;
-    int kAdditionalDistance = 500;
+    const double kBaseFee = 2;
+    const int kBaseDistance = 1000;
+    const int kAdditionalDistance = 500;
 
     if (distance < kBaseDistance) {
       return kBaseFee;
@@ -63,7 +63,7 @@ class FeeCalFunctions {
   // Function calculates surcharge for food items over 4
   static double itemsCountSurcharge(int itemsCount) {
     double surcharge = 0;
-    double kAdditionalCharge = 0.50;
+    const double kAdditionalCharge = 0.50;
     if (itemsCount > 4) {
       surcharge = (itemsCount - 4) * kAdditionalCharge;
       return surcharge;
