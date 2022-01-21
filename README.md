@@ -8,10 +8,11 @@ This project contains a simple Dart console application for calculating the dist
 description in the 'grade - Delivery Fee Calculator - Frontend and Mobile.pdf'
 file.
 
-How to:
+How to
         - Terminal: git clone https://github.com/labnof/delivery_app.git
-        - Open location in Terminal
-        - Then Dart run
+        - Open location(bin) in Terminal
+        - Then {Dart run}
+        
     
 Main App code:
 
