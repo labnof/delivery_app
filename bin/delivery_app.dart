@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:intl/intl.dart';
-import 'fee_calculation_functions.dart';
+import 'fee_calculation_functions.dart' as fee_calculator;
 
 // The variables used to calculate the Fee.
 double cartValue = 0.0, distance = 0.0;
@@ -28,7 +28,7 @@ void main(List<String> arguments) {
   print("Enter date time in HH:mm format e.g 17:00:");
   time = stdin.readLineSync()!;
 
-  double deliveryFeeTotal = FeeCalFunctions.totalDeliveryFee(
+  double deliveryFeeTotal = fee_calculator.totalDeliveryFee(
       cartValue, distance, itemCount, date, time);
   print("\n\n********DeliveryFeeTotal is $deliveryFeeTotal********");
 }

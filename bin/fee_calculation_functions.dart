@@ -1,9 +1,8 @@
 // Class for the Fee calculation functions.
 import 'dart:math';
 
-class FeeCalFunctions {
   // Function calculates the total delivery cost
-  static double totalDeliveryFee(double cartValue, double distance,
+  double totalDeliveryFee(double cartValue, double distance,
       int itemCount, String date, String time) {
     double totalDeliveryFee = 0.0;
     const double kMaxDeliveryFee = 15.0;
@@ -28,7 +27,7 @@ class FeeCalFunctions {
   }
 
 // checks if it is friday rush
-  static bool isFridayRush(String date, String time) {
+   bool isFridayRush(String date, String time) {
    const num kRushStartTime = 15.0;
    const num kRushEndTime = 19.0;
 
@@ -41,7 +40,7 @@ class FeeCalFunctions {
   }
 
   // Function adds surcharge to cart value if necessary
-  static double cartValueSurcharge(double cartValue) {
+  double cartValueSurcharge(double cartValue) {
     if (cartValue < 10) {
       return 10 - cartValue;
     }
@@ -49,7 +48,7 @@ class FeeCalFunctions {
   }
 
   // Function calculates the distance fee
-  static double distanceFee(double distance) {
+  double distanceFee(double distance) {
     const double kBaseFee = 2;
     const int kBaseDistance = 1000;
     const int kAdditionalDistance = 500;
@@ -61,7 +60,7 @@ class FeeCalFunctions {
   }
 
   // Function calculates surcharge for food items over 4
-  static double itemsCountSurcharge(int itemsCount) {
+  double itemsCountSurcharge(int itemsCount) {
     double surcharge = 0;
     const double kAdditionalCharge = 0.50;
     if (itemsCount > 4) {
@@ -70,4 +69,4 @@ class FeeCalFunctions {
     }
     return surcharge;
   }
-}
+
